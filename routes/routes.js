@@ -85,7 +85,6 @@ router.post("/reply", authenticateUser, async (req, res) => {
     );
 
     const post = await Post.findById(req.body.postId).populate("replies");
-    console.log(post);
     res.render("post", {
       title: post.postTitle,
       content: post.postContent,
@@ -94,8 +93,6 @@ router.post("/reply", authenticateUser, async (req, res) => {
       repliesList: post.replies,
       req: req,
     });
-    console.log(post.postTitle);
-    console.log(post.replies);
   } catch (error) {
     console.log(error);
   }
